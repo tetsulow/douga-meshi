@@ -1,17 +1,17 @@
-# README
+# アプリ名：動画メシ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##サイト概要
+YouTubeの料理レシピ動画で視聴者が実際に作った料理たちをシェアできるサイトです。
 
-Things you may want to cover:
+###サイトテーマ
+ーお店の味を家庭でも楽しめる
+ーワンランク上の調理技術を習得
 
-* Ruby version
+###テーマを選んだ理由
+私はよく自炊をするのですが、最近はYouTubeでアップされている料理のレシピ動画を見て料理をしています。プロの料理人が公開しているものが多く、普段の料理がお店の味に近づいたような気がして特別な気分になれます。
+しかし中には、調理器具や食材などが原因で動画のレシピ通りには再現することが難しい料理もあります。
 
-* System dependencies
 
-* Configuration
-
-* Database creation
 
 * Database initialization
 
