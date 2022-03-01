@@ -37,7 +37,7 @@ YouTubeの料理レシピ動画で視聴者が実際に作った料理たちを�
 
 ## チャレンジ要素一覧
 
-https://docs.google.com/spreadsheets/d/1IQ-iMq7CclmlulLGi8-JDEWWlnmKKQ7s8WoCxRM-xec/edit?usp=sharing
+[機能一覧]https://docs.google.com/spreadsheets/d/1IQ-iMq7CclmlulLGi8-JDEWWlnmKKQ7s8WoCxRM-xec/edit?usp=sharing
 
 ## 開発環境
 - OS：Amazon Linux 2
