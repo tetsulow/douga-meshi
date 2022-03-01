@@ -31,8 +31,8 @@ YouTubeの料理レシピ動画で視聴者が実際に作った料理たちを�
 ## 設計書
 
 [ER図]<br>
-[テーブル定義書]<br>
-[詳細設計]
+[テーブル定義書](https://docs.google.com/spreadsheets/d/1P2lqpDV_QNSaqDztu8mqCfExs2jf5RhVqIyPFAnP-DM/edit?usp=sharing)<br>
+[詳細設計](https://docs.google.com/spreadsheets/d/1LhXSH-pYudvlXxGsq2Z2DaagZTftPc6BCSHZPBGiHCs/edit?usp=sharing)
 
 
 ## チャレンジ要素一覧
