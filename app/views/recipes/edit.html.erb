@@ -1,0 +1,18 @@
+<h1>レシピを編集する</h1>
+<%= form_with model:@recipe, local:true do |f| %>
+<div>
+<%= f.label :料理名 %>
+<%= f.text_field :name %>
+</div>
+<div>
+<%= f.label :レシピ内容 %>
+<%= f.text_field :caption %>
+</div>
+<div>
+<%= f.label :料理の写真 %>
+<%= f.file_field :image, accept: "image/*" %>
+</div>
+<div>
+<%= f.submit "編集内容を保存" %>
+</div>
+<% end %>
