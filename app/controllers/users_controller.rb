@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:show, :edit, :update]
 
   def show
     @user = User.find(params[:id])
+    @recipes = @user.recipes
   end
 
   def edit
@@ -23,6 +25,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:last_name, :first_name, :is_deleted)
+  end
+
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path(current_user)
+    end
   end
 
 end

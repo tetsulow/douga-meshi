@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+
   def new
     @recipe = Recipe.new
   end
@@ -19,6 +21,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @recipe_comment = RecipeComment.new
   end
 
   def edit
@@ -45,5 +48,12 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:name, :caption, :image)
   end
+
+   def ensure_correct_user
+     @recipe = Recipe.find(params[:id])
+      unless @recipe.user == current_user
+        redirect_to recipes_path
+      end
+   end
 
 end

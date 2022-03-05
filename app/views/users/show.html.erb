@@ -1,4 +1,14 @@
 <h2>マイページ</h2>
 <%= @user.last_name %>
-
+<div>
 <%= link_to "編集する", edit_user_path(@user) %>
+</div>
+
+<% @recipes.each do |recipe| %>
+  <%= link_to recipe_path(recipe.id) do %>
+    <%= image_tag recipe.get_image, size: "200x200" %>
+  <% end %>
+  <p>料理名：<%= recipe.name %></p>
+  <p>説明：<%= recipe.caption %></p>
+  <p>ユーザーネーム：<%= recipe.user.last_name %></p>
+<% end %>

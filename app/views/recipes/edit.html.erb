@@ -9,6 +9,7 @@
 <%= f.text_field :caption %>
 </div>
 <div>
+<%= image_tag @recipe.get_image, size: "200x200" %>
 <%= f.label :料理の写真 %>
 <%= f.file_field :image, accept: "image/*" %>
 </div>
