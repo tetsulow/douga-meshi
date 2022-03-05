@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root 'homes#top'
 
   resources :recipes, only: [:new, :create, :index, :show, :edit, :update, :destroy]do
+    resource :favorites, only: [:create, :destroy]
     resources :recipe_comments, only: [:create, :destroy]
   end
 
