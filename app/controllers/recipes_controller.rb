@@ -28,10 +28,16 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
-     redirect_to recipe_path(@recipe), notice: "You have updated book successfully."
+     redirect_to recipe_path(@recipe), notice: "レシピ内容が更新されました"
     else
      render :edit
     end
+  end
+
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to recipes_path
   end
 
   private

@@ -4,3 +4,7 @@
  <p>レシピ：<%= @recipe.caption %></p>
  <p>ユーザーネーム：<%= @recipe.user.last_name %></p>
  <p>投稿日：<%= @recipe.created_at.strftime('%Y/%m/%d') %></p>
+
+ <% if @recipe.user == current_user %>
+ <%= link_to "内容を編集する", edit_recipe_path(@recipe) %>
+ <% end %>

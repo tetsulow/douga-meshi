@@ -16,3 +16,7 @@
 <%= f.submit "編集内容を保存" %>
 </div>
 <% end %>
+
+<% if @recipe.user == current_user %>
+<%= link_to "レシピを削除する", recipe_path(@recipe), method: :delete, "data-confirm" => "本当に消しますか？" %>
+<% end %>

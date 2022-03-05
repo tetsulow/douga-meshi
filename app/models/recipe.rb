@@ -3,7 +3,6 @@ class Recipe < ApplicationRecord
   belongs_to :user
 
   def get_image
-
     image
   end
 
