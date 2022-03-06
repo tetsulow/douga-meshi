@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :recipe_comments, only: [:create, :destroy]
   end
 
-  resources :users, only: [:show, :edit, :update, :delete]
+  resources :users, only: [:show, :edit, :update, :delete]do
+     get :favorites, on: :collection
+  end
 
 end

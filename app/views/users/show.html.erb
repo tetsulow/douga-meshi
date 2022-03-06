@@ -10,5 +10,14 @@
   <% end %>
   <p>料理名：<%= recipe.name %></p>
   <p>説明：<%= recipe.caption %></p>
-  <p>ユーザーネーム：<%= recipe.user.nickname %></p>
+  <p>ニックネーム：<%= recipe.user.nickname %></p>
+<% end %>
+
+<% if @favorite_list.present? %>
+  <% @favorite_list.each do |recipe| %>
+    <%= link_to recipe_path(recipe.id) do %>
+    <%= image_tag recipe.image, size: "200x200"%>
+    <%= recipe.name %>
+    <% end %>
+    <% end %>
 <% end %>

@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @recipes = @user.recipes
+    favorites = Favorite.where(user_id: current_user.id).pluck(:recipe_id)
+    @favorite_list = Recipe.find(favorites)
   end
 
   def edit
