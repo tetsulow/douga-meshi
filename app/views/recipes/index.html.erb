@@ -1,11 +1,23 @@
 <h1>みんなのレシピ</h1>
-<% @recipes.each do |recipe| %>
-<div>
-  <%= link_to recipe_path(recipe.id) do %>
-    <%= image_tag recipe.get_image, size: "200x200" %>
+<div class="search-form">
+  <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :keyword, value: @keyword %>
+    <%= f.submit "検索" %>
   <% end %>
-  <p>料理名：<%= recipe.name %></p>
-  <p>説明：<%= recipe.caption %></p>
-  <p>ユーザーネーム：<%= recipe.user.last_name %></p>
 </div>
+<div class="recipe-list">
+  <% @recipes.each do |recipe| %>
+    <%= recipe.name %>
+  <% end %>
+</div>
+
+  <% @recipes.each do |recipe| %>
+  <div>
+    <%= link_to recipe_path(recipe.id) do %>
+      <%= image_tag recipe.get_image, size: "200x200" %>
+    <% end %>
+    <p>料理名：<%= recipe.name %></p>
+    <p>説明：<%= recipe.caption %></p>
+    <p>ユーザーネーム：<%= recipe.user.nickname %></p>
+  </div>
 <% end %>

@@ -19,6 +19,12 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
+  def search
+    @recipes = Recipe.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
+
   def show
     @recipe = Recipe.find(params[:id])
     @recipe_comment = RecipeComment.new

@@ -1,5 +1,5 @@
 <h2>マイページ</h2>
-<%= @user.last_name %>
+<%= @user.nickname %>
 <div>
 <%= link_to "編集する", edit_user_path(@user) %>
 </div>
@@ -10,5 +10,5 @@
   <% end %>
   <p>料理名：<%= recipe.name %></p>
   <p>説明：<%= recipe.caption %></p>
-  <p>ユーザーネーム：<%= recipe.user.last_name %></p>
+  <p>ユーザーネーム：<%= recipe.user.nickname %></p>
 <% end %>
