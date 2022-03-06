@@ -5,9 +5,9 @@
     <%= f.submit "検索" %>
   <% end %>
 </div>
-<div class="recipe-list">
-  <% @recipes.each do |recipe| %>
-    <%= recipe.name %>
+<div>
+  <% if @recipes.count == 0 %>
+    <p>検索結果がありませんでした</p>
   <% end %>
 </div>
 
