@@ -1,0 +1,20 @@
+<table>
+  <tbody>
+      <% recipe.recipe_comments.each do |recipe_comment| %>
+      <tr>
+
+        <td>
+          <%= link_to user_path(recipe_comment.user) do %>
+            <%= recipe_comment.user.nickname %>
+          <% end %>
+        </td>
+        <td><%= recipe_comment.comment %></td>
+        <td>
+          <% if recipe_comment.user == current_user %>
+            <%= link_to "Destroy", recipe_recipe_comment_path(recipe, recipe_comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
