@@ -1,1 +1,28 @@
-<h1>Topページ</h1>
+<header class='top-page-header'>
+  <div class="header-top-content">
+    <%= link_to root_path, class:"header-title" do %>
+      <div>MyDish</div>
+    <% end %>
+
+    <div class='nav'>
+      <ul class='lists-right'>
+        <% if user_signed_in? %>
+          <ul class="js-lists" id="pull-down">
+            <li class="js-content"><%= link_to '編集', edit_user_registration_path(current_user), class: "js-link" %></li>
+            <li class="js-content"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "js-link" %></li>
+          </ul>
+          <li class="user-nickname" id="lists"><%= current_user.nickname %></li>
+        <% else %>
+          <li><%= link_to 'ログイン', new_user_session_path, class: "login", id: "login" %></li>
+          <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up", id: "sign-up" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="header-center">
+    <div class="header-center-top">みんなの料理レシピ検索なら</div>
+    <div class="header-center-bottom">MyDish</div>
+  </div>
+</header>
+
+

@@ -16,31 +16,17 @@
 
 @import "bootstrap";
 
-.top-page-header {
-  width: 100vw;
-  padding: 10px 0 20px 0;
-  /*position: fixed*/
-}
-
-.header-top-content{
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 10px 0 30px 0;
-}
 
 
-.lists-right {
-  display: flex;
-  list-style: none;
-  margin: 0 30px 0 auto;
+header {
+  width: 90%;
+  padding: 15px 0;
+  margin: 30px auto 0;
+  text-align: center;
+  border-top: solid 5px #000000;
 }
 
-.header-title {
-  font-size: 40px;
-  text-decoration: none;
-  color:#4b4b4b;
-  font-family: 'YuGothic','Yu Gothic','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', 'Meiryo','ＭＳ ゴシック',sans-serif;
-  margin-left: 4%;
+header .headline {
+  font-size: 32px;
 }
+

@@ -1,21 +1,20 @@
-<header class="top-page-header">
-  <div class="header-top-content">
+<ul class="nav justify-content-center">
+  <li class="root">
     <%= link_to root_path, class:"header-title" do %>
     <div>MY DISH</div>
     <% end %>
+  </li>
+</ul>
 
-    <div class="nav">
-      <ul class="lists-right" >
-        <li><%= link_to "みんなのレシピ", recipes_path %></li>
+
+<ul class="nav justify-content-end">
+         <li class="nav-item"><%= link_to "みんなのレシピ", recipes_path %></li>
         <% if user_signed_in? %>
-          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-          <li><%= link_to "マイページ", user_path(current_user.id) %></li>
-          <li><%= link_to "レシピ投稿", new_recipe_path(current_user.id) %></li>
+          <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+           <li class="nav-item"><%= link_to "マイページ", user_path(current_user.id) %></li>
+           <li class="nav-item"><%= link_to "レシピ投稿", new_recipe_path(current_user.id) %></li>
         <% else %>
-          <li><%= link_to "ログイン", new_user_session_path %></li>
-          <li><%= link_to "新規登録", new_user_registration_path %></li>
+          <li class="nav-item"><%= link_to "ログイン", new_user_session_path %></li>
+           <li class="nav-item"><%= link_to "新規登録", new_user_registration_path %></li>
         <% end %>
-      </ul>
-    </div>
-  </div>
-</header>
+</ul>
