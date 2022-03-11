@@ -1,23 +1,28 @@
-<h1>みんなのレシピ</h1>
-<div class="search-form">
-  <%= form_with url: search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :keyword, value: @keyword %>
-    <%= f.submit "検索" %>
-  <% end %>
-</div>
-<div>
-  <% if @recipes.count == 0 %>
-    <p>検索結果がありませんでした</p>
-  <% end %>
-</div>
 
-  <% @recipes.each do |recipe| %>
-  <div>
-    <%= link_to recipe_path(recipe.id) do %>
-      <%= image_tag recipe.get_image, size: "200x200" %>
-    <% end %>
-    <p>料理名：<%= recipe.name %></p>
-    <p>説明：<%= recipe.caption %></p>
-    <p>ユーザーネーム：<%= recipe.user.nickname %></p>
+    <h3>みんなのレシピ</h3>
+
+    <div class="search-form mb-5">
+      <%= form_with url: search_path, method: :get, local: true do |f| %>
+        <%= f.text_field :keyword, value: @keyword %>
+        <%= f.submit "検索" %>
+      <% end %>
+    </div>
+    <div>
+      <% if @recipes.count == 0 %>
+        <p>検索結果がありませんでした</p>
+      <% end %>
+    </div>
+   <div class="list-wrap">
+      <% @recipes.each do |recipe| %>
+        <div class="list-box">
+          <%= link_to recipe_path(recipe.id) do %>
+            <%= image_tag recipe.get_image, size: "200x200" %>
+          <div class="list-comment">
+          <span class="list-title">■<%= recipe.name %></span><br>
+          <% end %>
+          <span class="list-body"><%= recipe.caption %></span>
+          <h6>投稿者：<%= recipe.user.nickname %></h6>
+        </div>
+    </div>
+      <% end %>
   </div>
-<% end %>
