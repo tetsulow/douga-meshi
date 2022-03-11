@@ -1,17 +1,28 @@
-<h2>マイページ</h2>
-<%= @user.nickname %>
-<div>
-<%= link_to "編集する", edit_user_path(@user) %>
-</div>
+<div class="container my-5">
+	<div class="row">
+	  <div class="col-12">
+  		<div class="offset-sm-1">
+        <h2 class="px-3 pb-1">マイページ</h2>
+      </div>
+    </div>
 
-<% @recipes.each do |recipe| %>
-  <%= link_to recipe_path(recipe.id) do %>
-    <%= image_tag recipe.get_image, size: "200x200" %>
-  <% end %>
-  <p>料理名：<%= recipe.name %></p>
-  <p>説明：<%= recipe.caption %></p>
-  <p>ニックネーム：<%= recipe.user.nickname %></p>
-<% end %>
+    <div class="col-8">
+      <h4>レシピ一覧</h4>
+      <% @recipes.each do |recipe| %>
+        <%= link_to recipe_path(recipe.id) do %>
+          <%= image_tag recipe.get_image, size: "200x200" %>
+        <% end %>
+        <%= recipe.name %>
+        <%= recipe.caption %>
+      <% end %>
+    </div>
+
+    <div class="col-4">
+      <%= @user.nickname %>
+      <div>
+        <%= link_to "編集する", edit_user_path(@user) %>
+      </div>
+    </div>
 
 <% if @favorite_list.present? %>
   <% @favorite_list.each do |recipe| %>
@@ -21,3 +32,5 @@
     <% end %>
     <% end %>
 <% end %>
+  </div>
+</div>

@@ -1,20 +1,36 @@
-<ul class="nav justify-content-center">
-  <li class="root">
-    <%= link_to root_path, class:"header-title" do %>
-    <div>MY DISH</div>
-    <% end %>
-  </li>
-</ul>
-
-
-<ul class="nav justify-content-end">
-         <li class="nav-item"><%= link_to "みんなのレシピ", recipes_path %></li>
+<nav class="navbar navbar-expand-lg navbar-light nav-bg">
+  <div class="container-fluid">
+     <%= link_to "My Dish", root_path, class: 'navbar-brand text-white' %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <%= link_to "みんなのレシピ", recipes_path, class: 'nav-link active text-white' %>
+        </li>
         <% if user_signed_in? %>
-          <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-           <li class="nav-item"><%= link_to "マイページ", user_path(current_user.id) %></li>
-           <li class="nav-item"><%= link_to "レシピ投稿", new_recipe_path(current_user.id) %></li>
+          <li class="nav-item m-auto me-5 text-white">
+          ようこそ、<%= current_user.nickname %>さん！
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link active text-white' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link active text-white' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "レシピ投稿", new_recipe_path(current_user.id), class: 'nav-link active text-white' %>
+          </li>
         <% else %>
-          <li class="nav-item"><%= link_to "ログイン", new_user_session_path %></li>
-           <li class="nav-item"><%= link_to "新規登録", new_user_registration_path %></li>
+          <li class="nav-item">
+            <%= link_to "ログイン", new_user_session_path, class: 'nav-link active text-white' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "新規登録", new_user_registration_path, class: 'nav-link active text-white' %>
+          </li>
         <% end %>
-</ul>
+      </ul>
+    </div>
+  </div>
+</nav>

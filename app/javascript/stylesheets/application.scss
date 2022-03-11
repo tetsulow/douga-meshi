@@ -129,3 +129,50 @@
   font-size: 40px;
   color: whitesmoke;
 }
+
+// headerの装飾
+
+.nav-bg {
+   background-color: orange;
+ }
+
+ .headline {
+  display: flex;
+ }
+
+ .all-products {
+  display: inline-block;
+  margin: 0.5em;
+ }
+
+ .box-shadow {
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+ }
+
+ .scolor1 {
+  color: #00DD00;
+  font-weight: bold;
+ }
+
+ .scolor2 {
+  color: #FF0000;
+  font-weight: bold;
+ }
+
+ select {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+ }
