@@ -1,22 +1,28 @@
-<h1>レシピを編集する</h1>
-<%= form_with model:@recipe, local:true do |f| %>
-<div>
-<%= f.label :料理名 %>
-<%= f.text_field :name %>
+<div class="container my-5">
+  <div class="row">
+    <div class="mx-auto" style="width: 500px;">
+      <h4>レシピを編集する</h4>
+      <%= form_with model:@recipe, local:true do |f| %>
+        <div>
+          <%= f.label :料理名 %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <div>
+          <%= f.label :レシピ内容 %>
+          <%= f.text_field :caption, class: 'form-control', size: "30x20" %>
+        </div>
+        <div>
+          <%= image_tag @recipe.get_image, size: "200x200" %>
+          <%= f.label :料理の写真 %>
+          <%= f.file_field :image, accept: "image/*" %>
+        </div>
+        <div>
+          <%= f.submit "編集内容を保存" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-<div>
-<%= f.label :レシピ内容 %>
-<%= f.text_field :caption %>
-</div>
-<div>
-<%= image_tag @recipe.get_image, size: "200x200" %>
-<%= f.label :料理の写真 %>
-<%= f.file_field :image, accept: "image/*" %>
-</div>
-<div>
-<%= f.submit "編集内容を保存" %>
-</div>
-<% end %>
 
 <% if @recipe.user == current_user %>
 <%= link_to "レシピを削除する", recipe_path(@recipe), method: :delete, "data-confirm" => "本当に消しますか？" %>
