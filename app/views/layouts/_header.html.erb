@@ -10,9 +10,6 @@
           <%= link_to "みんなのレシピ", recipes_path, class: 'nav-link active text-white' %>
         </li>
         <% if user_signed_in? %>
-          <li class="nav-item m-auto me-5 text-white">
-          ようこそ、<%= current_user.nickname %>さん！
-          </li>
           <li class="nav-item">
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link active text-white' %>
           </li>
