@@ -20,3 +20,5 @@ ActiveStorage.start()
 //= require jquery
 //= require jquery_ujs
 //= popper
+window.$ = window.jQuery = require('jquery');
+require('packs/raty')

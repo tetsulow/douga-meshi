@@ -2,7 +2,6 @@
   <tbody>
       <% recipe.recipe_comments.each do |recipe_comment| %>
       <tr>
-
         <td>
           <%= link_to user_path(recipe_comment.user) do %>
             @<%= recipe_comment.user.nickname %>
@@ -13,7 +12,18 @@
           <% if recipe_comment.user == current_user %>
             <%= link_to "コメント削除", recipe_recipe_comment_path(recipe, recipe_comment), method: :delete, class: "btn btn-sm btn-danger pull-right", remote: true %>
           <% end %>
-        </td>
+         </td>
+        <td id="star-rate<%= recipe_comment.id%>"></td>
+        <script>
+          $('#star-rate<%= recipe_comment.id%>').raty({
+          size      : 36,
+          starOff   : '<%= asset_path('star-off.png') %>',
+          starOn    : '<%= asset_path('star-on.png') %>',
+          starHalf  : "<%= asset_path('star-half.png') %>",
+          readOnly: true,
+          score: <%= recipe_comment.rate %>,
+          });
+        </script>
       </tr>
       <% end %>
   </tbody>
