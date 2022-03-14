@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
     if @recipe.save
       redirect_to recipe_path(@recipe), notice: "新しいレシピを投稿しました"
     else
-      render :index
+      render :show
     end
   end
 

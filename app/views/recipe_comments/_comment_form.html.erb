@@ -1,4 +1,21 @@
 <%= form_with model: [recipe, recipe_comment], local: false do |f| %>
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "comment-textarea" %>
     <%= f.submit "送信する" %>
+    <div class="form-group" id="rate">
+    <%= f.label :rate,'評価 ' %>
+    <%= f.hidden_field :rate, id: :review_star %>
+  </div>
+
+  <!-- 評価のjavascript -->
+  <script>
+  $('#rate').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+
+    scoreName: 'recipe_comment[rate]',
+    half: false,
+  });
+  </script>
+
 <% end %>

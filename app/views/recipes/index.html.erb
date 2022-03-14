@@ -5,13 +5,13 @@
       <%= f.submit "検索" %>
     <% end %>
   </div>
-  
+
   <div>
     <% if @recipes.count == 0 %>
       <p>検索結果がありませんでした</p>
     <% end %>
   </div>
-  
+
   <div class="list-wrap">
     <% @recipes.each do |recipe| %>
       <div class="list-box">
@@ -22,6 +22,25 @@
         <% end %>
           <span class="list-body"><%= recipe.caption %></span>
           <h6>投稿者：<%= recipe.user.nickname %></h6>
+
+
+          <div class="average-review-rating" data-score=<%= recipe.recipe_comments.average(:rate) %>></div>
+
+          <script>
+            $('.average-review-rating').empty();
+            $('.average-review-rating').raty({
+              size      : 36,
+              readOnly: true,
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+              score: function() {
+                return $(this).attr('data-score')
+              }
+            });
+          </script>
+
+
         </div>
     </div>
       <% end %>
