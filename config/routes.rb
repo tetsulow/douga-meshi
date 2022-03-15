@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   root 'homes#top'
   get "search" => "recipes#search"
+  post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+  post 'contacts/back', to: 'contacts#back', as: 'back'
+  get 'done', to: 'contacts#done', as: 'done'
 
   resources :recipes, only: [:new, :create, :index, :show, :edit, :update, :destroy]do
     resource :favorites, only: [:create, :destroy]
@@ -11,7 +14,9 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show, :edit, :update, :delete]do
-     get :favorites, on: :collection
+    get :favorites, on: :collection
   end
+
+  resources :contacts, only: [:new, :create]
 
 end

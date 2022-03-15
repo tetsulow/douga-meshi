@@ -3,18 +3,22 @@
     <%= link_to root_path, class:"header-title" do %>
       <div>MyDish</div>
     <% end %>
-
     <div class='nav'>
       <ul class='lists-right'>
+        <li class="nav-item">
+          <%= link_to "みんなのレシピ", recipes_path, class: 'nav-link active text-white' %>
+        </li>
         <% if user_signed_in? %>
-          <ul class="js-lists" id="pull-down">
-            <li class="js-content"><%= link_to '編集', edit_user_registration_path(current_user), class: "js-link" %></li>
-            <li class="js-content"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "js-link" %></li>
+            <li class="nav-item">
+            <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link active text-white' %>
+            </li>
+            <li class="nav-item">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link active text-white' %>
+            </li>
           </ul>
-          <li class="user-nickname" id="lists"><%= current_user.nickname %></li>
         <% else %>
-          <li><%= link_to 'ログイン', new_user_session_path, class: "login", id: "login" %></li>
-          <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up", id: "sign-up" %></li>
+          <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: "login nav-link active text-white", id: "login" %></li>
+          <li class="nav-item"><%= link_to '新規登録', new_user_registration_path, class: "sign-up nav-link active text-white", id: "sign-up" %></li>
         <% end %>
       </ul>
     </div>
