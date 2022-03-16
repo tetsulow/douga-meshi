@@ -21,6 +21,11 @@
       <div class="recipe-comments-index mb-3">
         <%= render "recipe_comments/comment_index", recipe: @recipe %>
       </div>
+
+      <% @recipe_genres.each do |genre| %>
+      <%= genre.genre_name %>
+      <% end %>
+
       <div>
        <%= render "recipe_comments/comment_form", recipe: @recipe, recipe_comment: @recipe_comment %>
       </div>

@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!, only: [:show]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def new
@@ -8,7 +9,9 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
+    genre_list = params[:recipe][:genre_name].split(nil)
     if @recipe.save
+      @recipe.save_genre(genre_list)
       redirect_to recipe_path(@recipe), notice: "新しいレシピを投稿しました"
     else
       render :show
@@ -17,6 +20,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+    @genres = Genre.all               #ビューで投稿一覧を表示するために全取得。
   end
 
   def search
@@ -28,6 +32,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @recipe_comment = RecipeComment.new
+    @recipe_genres = @recipe.genres
   end
 
   def edit
@@ -36,7 +41,10 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
+    @recipe.user_id = current_user.id
+    genre_list = params[:recipe][:genre_name].split(nil)
     if @recipe.update(recipe_params)
+     @recipe.save_genre(genre_list)
      redirect_to recipe_path(@recipe), notice: "レシピ内容が更新されました"
     else
      render :edit

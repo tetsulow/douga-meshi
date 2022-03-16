@@ -12,6 +12,10 @@
     <% end %>
   </div>
 
+  <% @genres.each do |genre| %>
+   <%= genre.genre_name %>
+  <% end %>
+
   <div class="list-wrap">
     <% @recipes.each do |recipe| %>
       <div class="list-box">
@@ -22,10 +26,7 @@
         <% end %>
           <span class="list-body"><%= recipe.caption %></span>
           <h6>投稿者：<%= recipe.user.nickname %></h6>
-
-
           <div class="average-review-rating" data-score=<%= recipe.recipe_comments.average(:rate) %>></div>
-
           <script>
             $('.average-review-rating').empty();
             $('.average-review-rating').raty({
@@ -39,8 +40,6 @@
               }
             });
           </script>
-
-
         </div>
     </div>
       <% end %>

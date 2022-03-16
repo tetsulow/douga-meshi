@@ -29,4 +29,18 @@
   </div>
 </header>
 
+<h3 class="my-5">新着レシピ</h3>
+  <div class="list-wrap">
+    <% @recipes.each do |recipe| %>
+      <div class="card mx-2">
+        <div>
+          <%= link_to recipe_path(recipe) do %>
+            <%= image_tag recipe.get_image, size: "200x150" %>
+          <% end %>
+        </div>
+        <%= recipe.name %>
+      </div>
+    <% end %>
+  </div>
+
 
