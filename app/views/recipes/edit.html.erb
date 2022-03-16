@@ -3,6 +3,7 @@
     <div class="mx-auto" style="width: 500px;">
       <h4>レシピを編集する</h4>
       <%= form_with model:@recipe, local:true do |f| %>
+      <%= f.text_field :genre_name %>
         <div>
           <%= f.label :料理名 %>
           <%= f.text_field :name, class: 'form-control' %>

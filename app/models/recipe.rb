@@ -3,6 +3,8 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many :recipe_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :genre_maps, dependent: :destroy
+  has_many :genres, through: :genre_maps
 
   validates :name,presence:true, length:{maximum:50}
   validates :caption,presence:true,length:{maximum:200}
@@ -17,6 +19,21 @@ class Recipe < ApplicationRecord
 
   def self.search(keyword)
     where(["name like? OR caption like?", "%#{keyword}%", "%#{keyword}%"])
+  end
+
+  def save_genre(sent_genres)
+    current_genres = self.genres.pluck(:genre_name) unless self.genres.nil?
+    old_genres = current_genres - sent_genres
+    new_genres = sent_genres - current_genres
+
+    old_genres.each do |old|
+      self.genres.delete Genre.find_by(genre_name: old)
+    end
+
+    new_genres.each do |new|
+      new_recipe_genre = Genre.find_or_create_by(genre_name: new)
+      self.genres << new_recipe_genre
+    end
   end
 
 
