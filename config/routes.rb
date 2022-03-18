@@ -19,4 +19,8 @@ Rails.application.routes.draw do
 
   resources :contacts, only: [:new, :create]
 
+  resources :genres do
+    get 'recipes', to: 'recipes#genre'
+  end
+
 end

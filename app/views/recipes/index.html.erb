@@ -1,46 +1,53 @@
-<h3>みんなのレシピ</h3>
-  <div class="search-form mb-5">
-    <%= form_with url: search_path, method: :get, local: true do |f| %>
-      <%= f.text_field :keyword, value: @keyword %>
-      <%= f.submit "検索" %>
-    <% end %>
-  </div>
-
-  <div>
-    <% if @recipes.count == 0 %>
-      <p>検索結果がありませんでした</p>
-    <% end %>
-  </div>
-
-  <% @genres.each do |genre| %>
-   <%= genre.genre_name %>
-  <% end %>
-
-  <div class="list-wrap">
-    <% @recipes.each do |recipe| %>
-      <div class="list-box">
-        <%= link_to recipe_path(recipe.id) do %>
-          <%= image_tag recipe.get_image, size: "200x200" %>
-          <div class="list-comment">
-            <span class="list-title">■<%= recipe.name %></span><br>
-        <% end %>
-          <span class="list-body"><%= recipe.caption %></span>
-          <h6>投稿者：<%= recipe.user.nickname %></h6>
-          <div class="average-review-rating" data-score=<%= recipe.recipe_comments.average(:rate) %>></div>
-          <script>
-            $('.average-review-rating').empty();
-            $('.average-review-rating').raty({
-              size      : 36,
-              readOnly: true,
-              starOn: "<%= asset_path('star-on.png') %>",
-              starOff: "<%= asset_path('star-off.png') %>",
-              starHalf: "<%= asset_path('star-half.png') %>",
-              score: function() {
-                return $(this).attr('data-score')
-              }
-            });
-          </script>
-        </div>
-    </div>
+<div class="container">
+  <h3 class="my-3">みんなのレシピ</h3>
+    <div class="search-form mb-5">
+      <%= form_with url: search_path, method: :get, local: true do |f| %>
+        <%= f.text_field :keyword, value: @keyword, placeholder:"料理名や食材を入力" %>
+        <%= f.submit "検索" %>
       <% end %>
+    </div>
+    <div>
+      <% if @recipes.count == 0 %>
+        <p>検索結果がありませんでした</p>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-2">
+      <h5>タグで絞り込む</h5>
+      <% @genres.each do |genre| %>
+      <p class="border rounded-pill p-1 btn-group mx-2 text-white bg-white">
+       <%= link_to genre.genre_name, genre_recipes_path(genre.id) %>
+      <% end %>
+      </p>
+    </div>
+
+    <div class="list-wrap col-10 bg-white">
+      <% @recipes.each do |recipe| %>
+        <div class="list-box">
+          <%= link_to recipe_path(recipe.id) do %>
+            <%= image_tag recipe.get_image, size: "200x200" %>
+            <div class="list-comment">
+              <span class="list-title">■<%= recipe.name %></span><br>
+          <% end %>
+            <span class="list-body"><%= recipe.caption %></span>
+            <h6>投稿者：<%= recipe.user.nickname %></h6>
+            <div class="average-review-rating" data-score=<%= recipe.recipe_comments.average(:rate) %>></div>
+            <script>
+              $('.average-review-rating').empty();
+              $('.average-review-rating').raty({
+                size      : 36,
+                readOnly: true,
+                starOn: "<%= asset_path('star-on.png') %>",
+                starOff: "<%= asset_path('star-off.png') %>",
+                starHalf: "<%= asset_path('star-half.png') %>",
+                score: function() {
+                  return $(this).attr('data-score')
+                }
+              });
+            </script>
+          </div>
+        </div>
+          <% end %>
+      </div>
+    </div>
   </div>

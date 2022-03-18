@@ -6,6 +6,13 @@
      <div id="favorite_buttons_<%= @recipe.id %>">
 　   <%= render "favorites/favorite", recipe: @recipe %>
    </div>
+   <div class="mt-1">
+　   <% @recipe_genres.each do |genre| %>
+      <p class="border rounded-pill p-1 btn-group mx-2 text-white bg-white">
+       <%= link_to genre.genre_name, genre_recipes_path(genre.id) %>
+      <% end %>
+      </p>
+      </div>
   </div>
   <div class="col-8 mt-5">
     <p>作り方：<%= @recipe.caption %></p>
@@ -21,11 +28,6 @@
       <div class="recipe-comments-index mb-3">
         <%= render "recipe_comments/comment_index", recipe: @recipe %>
       </div>
-
-      <% @recipe_genres.each do |genre| %>
-      <%= genre.genre_name %>
-      <% end %>
-
       <div>
        <%= render "recipe_comments/comment_form", recipe: @recipe, recipe_comment: @recipe_comment %>
       </div>

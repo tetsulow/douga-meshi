@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
-    genre_list = params[:recipe][:genre_name].split(nil)
+    genre_list = params[:recipe][:genre_name].split(/[[:blank:]]+/).select(&:present?)
     if @recipe.save
       @recipe.save_genre(genre_list)
       redirect_to recipe_path(@recipe), notice: "新しいレシピを投稿しました"
@@ -23,9 +23,16 @@ class RecipesController < ApplicationController
     @genres = Genre.all               #ビューで投稿一覧を表示するために全取得。
   end
 
+  def genre
+    @genre_list = Genre.all  #こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
+    @genre = Genre.find(params[:genre_id])  #クリックしたタグを取得
+    @recipes = @genre.recipes.all           #クリックしたタグに紐付けられた投稿を全て表示
+  end
+
   def search
     @recipes = Recipe.search(params[:keyword])
     @keyword = params[:keyword]
+    @genres = Genre.all
     render "index"
   end
 
@@ -37,12 +44,13 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+    @recipe_genres = @recipe.genres
   end
 
   def update
     @recipe = Recipe.find(params[:id])
     @recipe.user_id = current_user.id
-    genre_list = params[:recipe][:genre_name].split(nil)
+    genre_list = params[:recipe][:genre_name].split(/[[:blank:]]+/).select(&:present?)
     if @recipe.update(recipe_params)
      @recipe.save_genre(genre_list)
      redirect_to recipe_path(@recipe), notice: "レシピ内容が更新されました"

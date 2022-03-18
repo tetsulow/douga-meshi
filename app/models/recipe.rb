@@ -4,7 +4,7 @@ class Recipe < ApplicationRecord
   has_many :recipe_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :genre_maps, dependent: :destroy
-  has_many :genres, through: :genre_maps
+  has_many :genres, through: :genre_maps, dependent: :destroy
 
   validates :name,presence:true, length:{maximum:50}
   validates :caption,presence:true,length:{maximum:200}

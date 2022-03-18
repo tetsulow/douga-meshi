@@ -1,16 +1,20 @@
 <header class='top-page-header'>
   <div class="header-top-content">
-    <%= link_to root_path, class:"header-title" do %>
+    <%= link_to root_path, class:"header-title active text-white" do %>
       <div>MyDish</div>
     <% end %>
     <div class='nav'>
-      <ul class='lists-right'>
-        <li class="nav-item">
+      <li class="nav-item">
           <%= link_to "みんなのレシピ", recipes_path, class: 'nav-link active text-white' %>
         </li>
+      <ul class='lists-right'>
+
         <% if user_signed_in? %>
+            <li class="nav-item text-white">
+              ようこそ<%= current_user.nickname %>さん
+            </li>
             <li class="nav-item">
-            <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link active text-white' %>
+            <%= link_to "マイキッチン", user_path(current_user.id), class: 'nav-link active text-white' %>
             </li>
             <li class="nav-item">
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link active text-white' %>
