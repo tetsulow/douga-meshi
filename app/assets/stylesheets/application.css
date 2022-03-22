@@ -54,11 +54,11 @@ header .headline {
   padding: 10px 0 20px 0;
   top: 0;
   height: 65vh;
-  background-image: image-url('../images/topbg.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   opacity: 0.8;
+  background-image: image-url("topbg.jpg");
 }
 
 .header-top-content{
