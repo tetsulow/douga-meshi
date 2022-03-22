@@ -145,7 +145,7 @@ header .headline {
   padding-left: 20%;
   display: flex;
   justify-content: center;
-  // align-items: center;
+  /*align-items: center;*/
   flex-direction: column;
   color: whitesmoke;
   font-family: 'YuGothic','Yu Gothic','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', 'Meiryo','ＭＳ ゴシック',sans-serif;
@@ -161,7 +161,7 @@ header .headline {
   color: whitesmoke;
 }
 
-// headerの装飾
+/*headerの装飾*/
 
 .nav-bg {
    background-color: orange;
@@ -208,7 +208,7 @@ header .headline {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
  }
 
-// レシピ一覧の装飾
+/*レシピ一覧の装飾*/
 main {
   width: 880px;
   margin: 0 auto;
