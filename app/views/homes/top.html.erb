@@ -33,18 +33,30 @@
   </div>
 </header>
 
-<h3 class="my-5">新着レシピ</h3>
-  <div class="list-wrap">
-    <% @recipes.each do |recipe| %>
-      <div class="card mx-2">
-        <div>
-          <%= link_to recipe_path(recipe) do %>
-            <%= image_tag recipe.get_image, size: "200x150" %>
-          <% end %>
+<div class="container">
+  <div class="row">
+    <h3 class="mt-3">新着レシピ</h3>
+    <div class="list-wrap">
+      <% @recipes.each do |recipe| %>
+        <div class="card mx-2">
+          <div>
+            <%= link_to recipe_path(recipe) do %>
+                <%= image_tag recipe.get_image, size: "200x150" %>
+            <% end %>
+          </div>
+          <%= recipe.name %>
         </div>
-        <%= recipe.name %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+    <div class="mb-3 mt-4">
+      <h5>キーワードから探す</h5>
+      <% @genres.each do |genre| %>
+        <p class="border rounded-pill p-1 btn-group mx-2 text-white bg-white">
+        <%= link_to genre.genre_name, genre_recipes_path(genre.id) %>
+      <% end %>
+        </p>
+    </div>
   </div>
+</div>
 
 
