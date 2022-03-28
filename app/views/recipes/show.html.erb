@@ -1,33 +1,32 @@
 <div class="container my-5">
   <div class="row">
-   <div class="col-4">
-     <h3><%= @recipe.name %></h3>
-     <%= image_tag @recipe.get_image, size: "200x200" %>
-     <div id="favorite_buttons_<%= @recipe.id %>">
-　   <%= render "favorites/favorite", recipe: @recipe %>
-   </div>
-   <div class="mt-1">
-　   <% @recipe_genres.each do |genre| %>
-      <p class="border rounded-pill p-1 btn-group mx-2 text-white bg-white">
-       <%= link_to genre.genre_name, genre_recipes_path(genre.id) %>
+    <div class="col-4">
+      <h3><%= @recipe.name %></h3>
+      <%= image_tag @recipe.get_image, size: "200x200" %>
+      <div id="favorite_buttons_<%= @recipe.id %>">
+　      <%= render "favorites/favorite", recipe: @recipe %>
+      </div>
+      <div class="mt-1">
+　      <% @recipe_genres.each do |genre| %>
+          <p class="border rounded-pill p-1 btn-group mx-2 text-white bg-white">
+            <%= link_to genre.genre_name, genre_recipes_path(genre.id) %>
+        <% end %>
+        </p>
+      </div>
+    </div>
+    <div class="col-8 mt-5">
+      <p>作り方：<%= @recipe.caption %></p>
+      <p>投稿者：<%= @recipe.user.nickname %></p>
+      <p class="text-right">投稿日：<%= @recipe.created_at.strftime('%Y/%m/%d') %></p>
+      <% if @recipe.user == current_user %>
+        <%= link_to "内容を編集する", edit_recipe_path(@recipe), class: "btn btn-sm btn-success text-white" %>
       <% end %>
-      </p>
-      </div>
-  </div>
-  <div class="col-8 mt-5">
-    <p>作り方：<%= @recipe.caption %></p>
-    <p>投稿者：<%= @recipe.user.nickname %></p>
-    <p class="text-right">投稿日：<%= @recipe.created_at.strftime('%Y/%m/%d') %></p>
-    <% if @recipe.user == current_user %>
-      <%= link_to "内容を編集する", edit_recipe_path(@recipe), class: "btn btn-sm btn-success text-white" %>
-    <% end %>
-    <div class="border-bottom" style="padding:10px;"></div>
-
-    <div>
-      <p>コメント件数：<%= @recipe.recipe_comments.count %></p>
-      <div class="recipe-comments-index mb-3">
-        <%= render "recipe_comments/comment_index", recipe: @recipe %>
-      </div>
+      <div class="border-bottom" style="padding:10px;"></div>
+      <div>
+        <p>コメント件数：<%= @recipe.recipe_comments.count %></p>
+        <div class="recipe-comments-index mb-3">
+          <%= render "recipe_comments/comment_index", recipe: @recipe %>
+        </div>
       <div>
        <%= render "recipe_comments/comment_form", recipe: @recipe, recipe_comment: @recipe_comment %>
       </div>
