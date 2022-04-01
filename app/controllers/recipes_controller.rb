@@ -24,7 +24,7 @@ class RecipesController < ApplicationController
   end
 
   def genre
-    @genre_list = Genre.all  #こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
+    @genre_list = Genre.all  #タグを全取得
     @genre = Genre.find(params[:genre_id])  #クリックしたタグを取得
     @recipes = @genre.recipes.all           #クリックしたタグに紐付けられた投稿を全て表示
   end
