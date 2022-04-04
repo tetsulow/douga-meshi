@@ -20,7 +20,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
-    @genres = Genre.all            #ビューで投稿一覧を表示するために全取得。
+    @genres = Genre.all        #ビューで投稿一覧を表示するために全取得。
   end
 
   def genre
