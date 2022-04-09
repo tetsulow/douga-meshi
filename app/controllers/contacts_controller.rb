@@ -30,7 +30,7 @@ class ContactsController < ApplicationController
     end
   end
 
-  # 送信完了画面を使用する場合お使いください。
+  # 送信完了画面
   def done
   end
 
