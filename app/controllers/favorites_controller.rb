@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  def create
+  def create     #いいね追加
     @recipe = Recipe.find(params[:recipe_id])
     favorite = current_user.favorites.new(recipe_id: @recipe.id)
     favorite.save

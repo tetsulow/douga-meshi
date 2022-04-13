@@ -50,7 +50,7 @@
     </div>
     <div class="mb-3 mt-4">
       <h5>キーワードから探す</h5>
-      <% @genres.each do |genre| %>
+      <% @genres.each do |genre| %> 
         <p class="border rounded-pill p-1 btn-group mx-2 text-white bg-white">
         <%= link_to genre.genre_name, genre_recipes_path(genre.id) %>
       <% end %>
