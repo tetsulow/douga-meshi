@@ -6,7 +6,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    @recipe = Recipe.find(params[:recipe_id])
+    @recipe = Recipe.find(params[:recipe_id]) #いいね削除
     favorite = current_user.favorites.find_by(recipe_id: @recipe.id)
     favorite.destroy
   end
