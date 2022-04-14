@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = "編集内容を保存しました"
-      redirect_to user_path(@user)
+      redirect_to user_path(@user)      #ユーザマイページに戻る
     else
       render 'edit'
     end
